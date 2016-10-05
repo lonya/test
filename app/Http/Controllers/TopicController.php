@@ -9,4 +9,4 @@ use App\Http\Requests;
 class TopicController extends Controller
 {
     //
-}
+} 

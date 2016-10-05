@@ -10,12 +10,12 @@
 	@section('menu')
 	<div class='container'>
 		<ul class='nav nav-pills'>
-			<li><a href="{{url('home')}}">Home</a></li>			
-			<li><a href="{{url('addcountry')}}">Add New</a></li>
+			<li><a href="{{url('topic')}}">Home</a></li>			
+			<li><a href="{{url('topic/create')}}">Add topic</a></li>
 		</ul>
 	</div>	
 	<div class="container col-md-12 col-lg-12 col-sm-12">
-	@yield('content')
+	@yield('content') 
 	</div>
 </body>
 </html>
