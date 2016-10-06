@@ -9,13 +9,18 @@
 <body>
 	@section('menu')
 	<div class='container'>
+	<div class="row">
 		<ul class='nav nav-pills'>
 			<li><a href="{{url('topic')}}">Home</a></li>			
 			<li><a href="{{url('topic/create')}}">Add topic</a></li>
 		</ul>
 	</div>	
-	<div class="container col-md-12 col-lg-12 col-sm-12">
-	@yield('content') 
+		<div class="row">
+			<div class="container col-md-12 col-lg-12 col-sm-12">
+			@yield('content') 
+			</div>
+		</div>	
 	</div>
+
 </body>
 </html>
