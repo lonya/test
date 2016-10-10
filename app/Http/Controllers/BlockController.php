@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\topic;
+
+use App\block;
 class BlockController extends Controller
 {
     /**
@@ -25,7 +28,10 @@ class BlockController extends Controller
      */
     public function create()
     {
-        //
+        $block = new block;
+        $topics=Topic::pluck('topicname','id');
+        return view('block.create',array('block'=>$block, 'topics'=>$topics, 'page'=>'Add Block'));
+       
     }
 
     /**
@@ -36,14 +42,34 @@ class BlockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fname=$request->file('imagepath');
+        if($fname!=null)
+        {
+            $originalname=$request->file('imagepath')->getClientOriginalName();
+            $request->file('imagepath')->move(public_path().'/img', $originalname);
+        }
+        $b=new Block();
+        $b->title=$request->title;
+        $b->topicid=$request->topicid;
+        $b->content=$request->content;
+        if($fname !=null)
+            $b->imagePath='/img/'.$originalname;
+        else
+            $b->imagePath='';
+
+        if(!$b->save())
+        {
+            $err=$t->getErrors();
+            return redirect()->action('BlockController@create')->with('errors', $err)->withInput();
+        }
+        return redirect()->action('BlockController@create')->with('message', 'New block '.$b->title.' has been added with id='.$b->id.'!')->withInput();
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @re turn \Illuminate\Http\Response
      */
     public function show($id)
     {

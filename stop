@@ -1,0 +1,13 @@
+[1mdiff --git a/resources/views/layout/master.blade.php b/resources/views/layout/master.blade.php[m
+[1mindex b7ec050..297c460 100644[m
+[1m--- a/resources/views/layout/master.blade.php[m
+[1m+++ b/resources/views/layout/master.blade.php[m
+[36m@@ -15,7 +15,7 @@[m
+ 		</ul>[m
+ 	</div>	[m
+ 	<div class="container col-md-12 col-lg-12 col-sm-12">[m
+[31m-	@yield('content')[m
+[32m+[m	[32m@yield('content')[m[41m [m
+ 	</div>[m
+ </body>[m
+ </html>[m
