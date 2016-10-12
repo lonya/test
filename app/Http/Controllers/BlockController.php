@@ -18,7 +18,7 @@ class BlockController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -84,7 +84,9 @@ class BlockController extends Controller
      */
     public function edit($id)
     {
-        //
+        $block=Block::find($id);
+        $topics=Topic::pluck('topicname','id');
+        return view('block.edit')->with('block',$block)->with('topics',$topics);
     }
 
     /**
@@ -96,7 +98,16 @@ class BlockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $block=Block::find($id);
+        $block->title=$request->title;
+        $block->topicid=$request->topicid;
+        $block->content=$request->content;
+        if($request->imagepath!=null)
+        {
+            $block->imagePath=$request->imagepath;
+        }
+        $block->save();
+        return redirect('topic/'.$block->topicid);
     }
 
     /**
@@ -107,6 +118,9 @@ class BlockController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $block=Block::find($id);
+        $block->delete();
+        return redirect('topic/'.$block->topicid);
+        
     }
 }

@@ -32,14 +32,25 @@
 		<div class="col-lg-9 dright">
 			@if($id!=0)
 				@foreach($blocks as $b)
-					<div>
-					<h2>{{$b->title}}</h2>	
+					<div >
+				<div style="margin: 0 0 0 10px"><h2>{{$b->title}}</h2>
+				{!!Form::model($b,array('route'=>array('block.update',$b->id),'method'=>'PUT'))!!}
+					<a style ="float:left" class="btn btn-xs btn-info" href="{{url('block/'.$b->id.'/edit')}}">&#10000;Edit</a>
+				{!!Form::close()!!}
+
+				{!!Form::open(array('route'=>array('block.destroy',$b->id)))!!}
+					{!!Form::hidden('_method','DELETE')!!}
+					&nbsp;&nbsp;&nbsp;
+					{{ Form::submit('&#10006;Delete', ['class' => 'btn btn-xs btn-danger']) }}
+				{!!Form::close()!!}
+				
+				</div style ="clear:left">	
 					@if($b->imagePath !="")
 						<a style="float:left; padding:10px" href="{{url($b->imagePath)}}" target="_blank" class="wrap-image">
 						<img src="{{asset($b->imagePath)}}" height="150px" alt="Kartinka:)">
 						</a>
 					@endif					
-					<p class="pre_text">{{$b->content}}</p>			
+					<pre class="pre_text">{{$b->content}}</pre>			
 					<hr style="clear:left">
 					</div>
 				@endforeach

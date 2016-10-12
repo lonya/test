@@ -13,12 +13,12 @@
 	<div class="row">
 		<ul class='nav nav-pills' style="padding:10px">
 			<li ><a href="{{url('topic')}}">Home</a></li>			
-			<li {{$page == 'Add Topic' ? 'class=active':''}}><a href="{{url('topic/create')}}">Add topic</a></li>
-			<li {{$page == 'Add Block'? 'class=active':''}}><a href="{{url('block/create')}}">Add block</a></li>
-
+			<li ><a href="{{url('topic/create')}}">Add topic</a></li>
+			<li><a href="{{url('block/create')}}">Add block</a></li>
 		</ul>
 		<hr style="margin:-5px;">
 		<br>
+
 	</div>	
 		<div class="row">
 			<div class="container col-md-12 col-lg-12 col-sm-12">
